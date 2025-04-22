@@ -1,7 +1,5 @@
 # Survey Management System
 
-![Survey Management System]
-
 A **comprehensive solution** for managing surveys, including creating, updating, and retrieving survey data. Supports importing surveys from Excel files, managing user profiles, and handling survey responses.
 
 ---
