@@ -18,7 +18,22 @@ namespace BLL.Service
     public class TargetProgramService : ITargetProgramService
     {
         private readonly IUnitOfWork _unitOfWork;
-
+        public int RemoveElement(int[] nums, int val)
+        {
+            
+        }
+        public void Solution(int[] nums, int val)
+        {
+            var list = new List<int>();
+            for (int i = 0; i < nums.Length; i++)
+            {
+                if (nums[i] != val)
+                {
+                    list.Add(nums[i]);
+                }
+            }
+            nums = list.ToArray();
+        }
         public TargetProgramService(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
