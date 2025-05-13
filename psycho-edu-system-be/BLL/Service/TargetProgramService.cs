@@ -18,22 +18,7 @@ namespace BLL.Service
     public class TargetProgramService : ITargetProgramService
     {
         private readonly IUnitOfWork _unitOfWork;
-        public int RemoveElement(int[] nums, int val)
-        {
-            
-        }
-        public void Solution(int[] nums, int val)
-        {
-            var list = new List<int>();
-            for (int i = 0; i < nums.Length; i++)
-            {
-                if (nums[i] != val)
-                {
-                    list.Add(nums[i]);
-                }
-            }
-            nums = list.ToArray();
-        }
+
         public TargetProgramService(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
@@ -305,7 +290,7 @@ namespace BLL.Service
             {
                 var enrolledProgram = await _unitOfWork.ProgramEnrollment.GetAll().Where(p => p.StudentId == userId).Select(p => p.ProgramId).ToListAsync();
 
-                query = query.Where(p =>  enrolledProgram.Contains(p.ProgramId));
+                query = query.Where(p => enrolledProgram.Contains(p.ProgramId));
             }
 
             else if (user.RoleId == 2)
@@ -433,11 +418,11 @@ namespace BLL.Service
                     // If the counselor meets all conditions, add to the list
                     availableCounselors.Add(availableCounselor);
                 }
-                return new ResponseDTO ("Available counselors retrieved successfully.", 200, true, availableCounselors);
+                return new ResponseDTO("Available counselors retrieved successfully.", 200, true, availableCounselors);
             }
             catch (Exception ex)
             {
-               return new ResponseDTO($"Error: {ex.Message}", 500, false, string.Empty);
+                return new ResponseDTO($"Error: {ex.Message}", 500, false, string.Empty);
             }
         }
         public async Task<ResponseDTO> RegisterTargetProgramAsync(Guid programId, Guid userId)
